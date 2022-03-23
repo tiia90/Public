@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Määritellään juuri reitti
-app.use(express.static('./Public'));
+app.use(express.static('./public'));
 
 app.get("/", function(req, res) {
     res.sendFile(__dirname + '/index.html');

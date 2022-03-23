@@ -1,0 +1,71 @@
+<style>
+
+    h1 {
+          color: turquoise;
+          margin-left: 200px;
+        }
+        td { color: blue;
+            
+
+        }
+        p {
+            color: turquoise;
+        }
+        .horisontti1 ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: AQUA;}.horisontti1 li {float: left;}.horisontti1 li a {display: block;color: black;text-align: center;padding: 14px 16px;text-decoration: none;}.horisontti1 li a:hover:not(.avoin){background-color: RGB(0, 100, 120);}.horisontti1 .avoin {background-color: rgb(230, 0, 115);}
+ </style>
+ <form name="kirjautumislomake" method="post" action="/ajaxmessage">
+    <div class= "horisontti1"><ul><li><a href="http://localhost:8080/"> Etusivu </a></li><li><a href="http://localhost:8080/guestbook"> Vieraskirjan viestit </a></li><li><a href="http://localhost:8080/newmessage"> Vieraskirja </a></li><li><a href="http://localhost:8080/ajaxmessage"> Ajax viestit </a></li></ul> </div>
+    <h1>Kiva kun päätit jättää viestin!</h1>
+    <p>Kirjoita seuraaviin kenttiin käyttäjänimesi, maa ja joku kiva viesti</p>
+    <table>
+        <tr>
+            <td><label for="usernameLabel">Username:</label></td>
+            <td><input type="text" class="form-control" name="username" id="username" size="20"/> </td>
+        </tr>
+        <tr>
+            <td><label for="countryLabel">Country:</label></td>
+            <td><input type="text" class="form-control" name="country" id="country" size="20"/></td>
+        </tr>
+        <tr>
+            <td><label for="messageLabel">Message:</label></td>
+            <td>
+                <input type="text" class="form-control" name="message" id="message" rows="8" cols="80"></td>
+        </tr>
+    </table>
+    <p>
+    <button type="submit" name="button1" id="button1" value="submit">Lähetä</button>
+    </p>
+</form>
+
+<div id="status"></div>
+
+<script>
+    window.onload= event => {
+         var nappi= document.getElementById("button1");
+
+        nappi.addEventListener("click", () => ){
+        var username= document.getElementById('username').value;
+        var country= document.getElementById('country').value;
+        var message= document.getElementById('message').value;
+            
+
+            var ajax= new XMLHttpRequest();
+            ajax.onreadystatechange = function(){
+                if(this.readyState ==4 && this.status==200){
+                    document.getElementById('status').innerHTML=this.responseText;
+                   
+                }
+            };
+
+            //Ajax pyyntö tyyppi post mutta mille reitille 
+            ajax.open("POST","/ajaxmessage", true);
+            //Ajax pyyntöön lomakkeen kenttien datat
+            ajax.setRequestHeader(
+                "Content-type",
+                "application/x-www-form-urlencoded" 
+                );
+            ajax.send("username="+username+"&country="+country+"&message="+message);
+            
+            });
+        };
+</script> 

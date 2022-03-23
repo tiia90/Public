@@ -101,7 +101,7 @@ app.post("/ajaxmessage", function(req, res) {
 });
 
 
-  app.listen(8080, function() {
+  app.listen(PORT, function() {
       //väliviesti työstö vaiheeseen
     console.log("toimii");
 });

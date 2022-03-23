@@ -1,0 +1,24 @@
+{
+  "name": "heroku",
+  "version": "1.0.0",
+  "description": "jsonpaketti",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Tiia",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiia90/Public.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tiia90/Public/issues"
+  },
+  "homepage": "https://github.com/tiia90/Public#readme"
+}
